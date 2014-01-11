@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/lblBasicSetup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Basic Setup"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblConsumerKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblBasicSetup"
+        android:layout_below="@+id/lblBasicSetup"
+        android:layout_marginTop="13dp"
+        android:text="Consumer Key" />
+
+    <TextView
+        android:id="@+id/lblConsumerSecret"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtConsumerSecret"
+        android:layout_below="@+id/txtConsumerSecret"
+        android:layout_marginTop="12dp"
+        android:text="Consumer Secret" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtConsumerKey"
+        android:layout_alignRight="@+id/txtConsumerKey"
+        android:layout_below="@+id/txtConsumerKey"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/chkCarbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lblTwitterClients"
+            android:layout_below="@+id/lblTwitterClients"
+            android:text="Carbon (dots &amp; lines)"
+            />
+
+        <TextView
+            android:id="@+id/lblTwitterClients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Twitter Clients to &apos;patch&apos;"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/txtConsumerKey"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblConsumerSecret"
+        android:layout_below="@+id/lblConsumerSecret"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txtConsumerSecret"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblConsumerKey"
+        android:layout_below="@+id/lblConsumerKey"
+        android:ems="10"
+        android:inputType="text"/>
+
+</RelativeLayout>
