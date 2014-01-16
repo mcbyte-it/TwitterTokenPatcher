@@ -1,21 +1,48 @@
 package twitter.token.patcher;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.os.Bundle;
+import java.text.SimpleDateFormat;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public class MainActivity extends Activity {
+import android.content.pm.ApplicationInfo;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceScreen;
+
+public class MainActivity extends PreferenceActivity {
+
+	Preference aboutArea;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		MainPrefs prefFragment = new MainPrefs();
-		FragmentManager fragmentManager = getFragmentManager();
-		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-		fragmentTransaction.replace(android.R.id.content, prefFragment);
-		fragmentTransaction.commit();
+		
+		addPreferencesFromResource(R.xml.main_prefs);
+		
+		PreferenceScreen prefSet = getPreferenceScreen();
+		
+		aboutArea = (Preference) prefSet.findPreference("pref_about");
+		String versionString = "";
+		try {
+			versionString += "version " + getPackageManager().getPackageInfo(getBaseContext().getPackageName(), 0).versionName;
+		} catch (Exception e) {
+			// nothing
+		}
+		try {
+			ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), 0);
+			ZipFile zf = new ZipFile(ai.sourceDir);
+			ZipEntry ze = zf.getEntry("classes.dex");
+			long time = ze.getTime();
+			String s = SimpleDateFormat.getInstance().format(new java.util.Date(time));
+			
+			versionString += " (Built on " + s + ")";
+		} catch (Exception e) {
+			// do nothing
+		}
+		if (Utils.isDebug()) versionString += " [DEBUG]";
+		
+		aboutArea.setSummary(versionString);
 	}
 
 }

@@ -14,13 +14,13 @@
             android:key="com.dotsandlines.carbon"
             android:title="Carbon (dots &amp; lines)" />
         <CheckBoxPreference
-            android:key="com.jv.falcon.pro"
-            android:title="Falcon Pro (Joaquim Vergès)"
-            android:enabled="false" />
-        <CheckBoxPreference
-            android:key="appPlaceHolder1"
-            android:title="Placeholder 1"
-            android:enabled="false" />
+            android:key="net.janesoft.janetter.android.free"
+            android:title="Janetter (Jane, Inc.)" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Info" >
+        <Preference
+            android:key="pref_about"
+            android:title="@string/app_name" />
     </PreferenceCategory>
 
 </PreferenceScreen>

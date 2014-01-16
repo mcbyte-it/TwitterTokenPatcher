@@ -1,5 +1,5 @@
 Twitter Token Patcher (Xposed)
-version 0.1 (Beta)
+version 0.3 (Beta)
 
 Description:
 ------------
@@ -8,5 +8,6 @@ This Xposed module will patch the Twitter API Tokens of the supported apps to an
 
 Currently the patcher works with:
 - Carbon (by dots and lines)
+- Janetter (by Jane Inc.)
 
 Others will come soon, thanks for YOUR support and contribution.

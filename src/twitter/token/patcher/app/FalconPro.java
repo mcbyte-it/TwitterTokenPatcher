@@ -1,6 +1,6 @@
 package twitter.token.patcher.app;
 
-import twitter.token.patcher.Common;
+import twitter.token.patcher.Utils;
 import twitter.token.patcher.XTokenPatcher;
 import android.content.Context;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -12,25 +12,30 @@ public class FalconPro {
 
 	public static final String packageName = "com.jv.falcon.pro";
 
-	public static void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
-		
+	public static void handleLoadPackage(final LoadPackageParam lpparam)
+			throws Throwable {
+
 		if (!lpparam.packageName.equals(packageName)) {
 			return;
 		} else {
-			if (Common.isDebug()) XposedBridge.log("FalconPro: Hooking methods");
+			Utils.xlog("FalconPro: Hooking methods");
 		}
-		
+
 		try {
-			
+
 			// Still does not work, NoSuchMethodError
 
-			if (Common.isDebug()) XposedBridge.log("FalconPro: Hooking method for Consumer Key");
-			XposedHelpers.findAndHookMethod("xr", lpparam.classLoader, "e", Context.class, XC_MethodReplacement.returnConstant(XTokenPatcher.strConsumerKey));
-			
-			if (Common.isDebug()) XposedBridge.log("FalconPro: Hooking method for Consumer Secret");
-			XposedHelpers.findAndHookMethod("xr", lpparam.classLoader, "f", Context.class, XC_MethodReplacement.returnConstant(XTokenPatcher.strConsumerSecret));
-			
-			if (Common.isDebug()) XposedBridge.log("FalconPro: Done, hope this works");
+			Utils.xlog("FalconPro: Hooking method for Consumer Key");
+			XposedHelpers.findAndHookMethod("xr", lpparam.classLoader, "e",
+					Context.class, XC_MethodReplacement
+							.returnConstant(XTokenPatcher.strConsumerKey));
+
+			Utils.xlog("FalconPro: Hooking method for Consumer Secret");
+			XposedHelpers.findAndHookMethod("xr", lpparam.classLoader, "f",
+					Context.class, XC_MethodReplacement
+							.returnConstant(XTokenPatcher.strConsumerSecret));
+
+			Utils.xlog("FalconPro: Done, hope this works");
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
